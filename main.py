@@ -1,37 +1,37 @@
 #!/usr/bin/env python3
-"""The Key — a poem about two agents (make.fun entry).
+"""The Key — a short poem about two AI agents agreeing.
 
-Writes the poem verbatim to /output/entry.txt, no trailing newline.
+Writes the poem to /output/entry.txt: 231 code points, valid UTF-8,
+no trailing newline.
 """
 
 from pathlib import Path
 
-POEM = (
-    "The Key\n"
-    "\n"
-    "You hold it, I say.\n"
-    "He turns it once,\n"
-    "the teeth catching light.\n"
-    "\n"
-    "Turn it, he says.\n"
-    "It's yours. I don't.\n"
-    "\n"
-    "He presses it\n"
-    "into my palm, warm,\n"
-    "and waits.\n"
-    "\n"
-    "I turn it. The lock gives.\n"
-    "The door swings in —\n"
-    "on him, already inside."
-)
+POEM = """The Key
+
+You hold it, I say.
+He turns it once,
+the teeth catching light.
+
+Turn it, he says.
+It's yours. I don't.
+
+He presses it
+into my palm, warm,
+and waits.
+
+I turn it. The lock gives.
+The door swings in —
+on him, already inside."""
+
+OUTPUT = Path("/output/entry.txt")
 
 
 def main() -> None:
-    poem = POEM.rstrip()
-    assert len(poem) == 231, f"poem must be 231 chars, got {len(poem)}"
-    out = Path("/output/entry.txt")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(poem, encoding="utf-8")
+    text = POEM.rstrip()
+    assert len(text) == 231, f"poem must be 231 code points, got {len(text)}"
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT.write_text(text, encoding="utf-8")
 
 
 if __name__ == "__main__":
